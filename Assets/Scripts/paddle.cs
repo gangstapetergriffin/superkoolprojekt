@@ -2,33 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class paddle : MonoBehaviour
+public class Paddle : MonoBehaviour
 {
+    public enum PaddleType { Left, Right }
+    public PaddleType paddleType;
     public float speed = 3f;
-    public string leftOrRight;
     public float maxValue = 3f;
 
-    void paddleControl(KeyCode up,KeyCode down)
-    {
-        if (Input.GetKey(up) && transform.position.y < maxValue)
-        {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
-        }
-        else if (Input.GetKey(down) && transform.position.y > -maxValue)
-        {
-            transform.Translate(Vector3.down * speed * Time.deltaTime);
-        }
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(leftOrRight == "left")
+        if (paddleType == PaddleType.Left)
         {
-            paddleControl(KeyCode.W, KeyCode.S);
-        }else if (leftOrRight == "right")
+            if (Input.GetKey(KeyCode.W) && transform.position.y < maxValue)
+            {
+                transform.Translate(Vector3.up * speed * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.S) && transform.position.y > -maxValue)
+            {
+                transform.Translate(Vector3.down * speed * Time.deltaTime);
+            }
+        }
+        else if (paddleType == PaddleType.Right)
         {
-            paddleControl(KeyCode.UpArrow, KeyCode.DownArrow);
+            if (Input.GetKey(KeyCode.UpArrow) && transform.position.y < maxValue)
+            {
+                transform.Translate(Vector3.up * speed * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.DownArrow) && transform.position.y > -maxValue)
+            {
+                transform.Translate(Vector3.down * speed * Time.deltaTime);
+            }
         }
     }
 }

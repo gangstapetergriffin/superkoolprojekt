@@ -24,7 +24,6 @@ public class collision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hit collision");
         if (collision.gameObject.CompareTag("top"))
         {
             Debug.Log("hit top or bottom");
@@ -33,6 +32,10 @@ public class collision : MonoBehaviour
         else if (collision.gameObject.CompareTag("right"))
         {
             Debug.Log("hit right or left");
+            xPosition = 0f; yPosition = 0f;
+        }
+        else if (collision.gameObject.CompareTag ("paddle right"))
+        {
             xSpeed = xSpeed * -1f;
         }
     }
