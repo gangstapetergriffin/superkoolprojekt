@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class collision : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class collision : MonoBehaviour
     public float yPosition = 1f;
     public float xSpeed = 1f;
     public float ySpeed = 1f;
+    public TMP_Text scoreField;
+    public float LeftScore;
+    public float RightScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +31,22 @@ public class collision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("top"))
         {
-            Debug.Log("hit top or bottom");
             ySpeed = ySpeed * -1f;
         }
         else if (collision.gameObject.CompareTag("right"))
         {
-            Debug.Log("hit right or left");
+            xPosition = 0f; yPosition = 0f;
+            LeftScore++;
+            scoreField.text = LeftScore + " - " + RightScore;
+        }
+        else if (collision.gameObject.CompareTag("left"))
+        {
+            RightScore++;
             xPosition = 0f; yPosition = 0f;
         }
         else if (collision.gameObject.CompareTag ("paddle right"))
         {
-            xSpeed = xSpeed * -1f;
+            xSpeed = xSpeed * -1.1f;
         }
     }
 }
