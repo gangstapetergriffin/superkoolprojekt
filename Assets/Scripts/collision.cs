@@ -43,6 +43,7 @@ public class collision : MonoBehaviour
         {
             RightScore++;
             xPosition = 0f; yPosition = 0f;
+            scoreField.text = LeftScore + " - " + RightScore;
         }
         else if (collision.gameObject.CompareTag ("paddle right"))
         {
