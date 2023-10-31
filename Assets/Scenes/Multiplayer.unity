@@ -972,8 +972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xPosition: 1
   yPosition: 1
-  xSpeed: 1
-  ySpeed: 1
+  xSpeed: 3
+  ySpeed: 3
   scoreField: {fileID: 171593224}
   LeftScore: 0
   RightScore: 0
